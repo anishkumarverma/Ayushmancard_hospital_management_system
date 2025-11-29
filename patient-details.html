@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details - Sevashram Hospital Vadodara</title>
+    <link rel="stylesheet" href="css/patient-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="patient-details-container">
+        <header class="header">
+            <h1>Patient Details</h1>
+            <button id="backButton" class="btn-secondary"><i class="fas fa-arrow-left"></i> Back to Patient List</button>
+        </header>
+
+        <div class="patient-info">
+            <h2 id="patientName">Rajesh Kumar</h2>
+            <p><strong>Patient ID:</strong> <span id="patientId">PAT001</span></p>
+            <p><strong>Contact:</strong> <span id="patientContact">+91 9876543210</span></p>
+            <p><strong>Admission Status:</strong> <span id="admissionStatus">Admitted under Ayushman Bharat</span></p>
+        </div>
+
+        <div class="health-report">
+            <h3>Health Reports</h3>
+            <ul id="reportList">
+                <li>Report 1: Blood Test - <a href="#">View</a></li>
+                <li>Report 2: X-Ray - <a href="#">View</a></li>
+            </ul>
+            <button id="addReportButton" class="btn-primary">Add New Health Report</button>
+        </div>
+
+        <div class="description-section">
+            <h3>Add Description</h3>
+            <textarea id="description" rows="4" placeholder="Add any additional notes or descriptions..."></textarea>
+            <button id="saveDescriptionButton" class="btn-primary">Save Description</button>
+        </div>
+    </div>
+
+    <script src="js/patient-details.js"></script>
+</body>
+</html> 

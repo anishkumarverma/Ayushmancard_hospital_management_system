@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevashram Hospital Vadodara - AyushmanIndia</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logopro.png" alt="AYUSHMANINDIA" class="logo-img">
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#patients"><i class="fas fa-users"></i> Patients</a>
+                    </li>
+                    <li>
+                        <a href="#add-patient"><i class="fas fa-user-plus"></i> Add Patient</a>
+                    </li>
+                    <li>
+                        <a href="#chat"><i class="fas fa-comments"></i> Emergency Chat</a>
+                    </li>
+                    <li>
+                        <a href="#notifications"><i class="fas fa-bell"></i> Notifications</a>
+                    </li>
+                    <li>
+                        <a href="#logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Sevashram Hospital Vadodara</h1>
+                </div>
+                <div class="header-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count"></span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="Anish.jpg" alt="Staff Profile">
+                        <span>Dr Anishkumar</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Overview -->
+            <section class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-user-injured"></i>
+                    <div class="stat-info">
+                        <h3>Total Patients</h3>
+                        <p>248</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-procedures"></i>
+                    <div class="stat-info">
+                        <h3>Active Cases</h3>
+                        <p>45</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <div class="stat-info">
+                        <h3>Today's Appointments</h3>
+                        <p>12</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <canvas id="patientStatusChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-color active"></span>
+                        <p>Active Patients</p>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color recovered"></span>
+                        <p>Recovered Patients</p>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color total"></span>
+                        <p>Total Patients</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Patient List Section -->
+            <section class="patient-list-section" style="display: none;">
+                <div class="patient-list-header">
+                    <h2><i class="fas fa-users"></i> Patient List</h2>
+                    <div class="search-container">
+                        <input type="text" id="patientSearch" placeholder="Search patient by name...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </div>
+
+                <div class="patient-list-container">
+                    <div class="patient-list-grid">
+                        <div class="patient-card">
+                            <div class="patient-info">
+                                <h3>Rajesh Kumar</h3>
+                                <div class="patient-details">
+                                    <span><i class="fas fa-bed"></i> Bed: 101</span>
+                                    <span><i class="fas fa-id-card"></i> ID: PAT001</span>
+                                    <span><i class="fas fa-phone"></i> +91 9876543210</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge active">Active</span>
+                                </div>
+                            </div>
+                            <button class="check-detail-button" data-patient-id="PAT001">Check Details</button>
+                        </div>
+
+                        <div class="patient-card">
+                            <div class="patient-info">
+                                <h3>Priya Sharma</h3>
+                                <div class="patient-details">
+                                    <span><i class="fas fa-bed"></i> Bed: 102</span>
+                                    <span><i class="fas fa-id-card"></i> ID: PAT002</span>
+                                    <span><i class="fas fa-phone"></i> +91 9876543211</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge recovered">Recovered</span>
+                                </div>
+                            </div>
+                            <button class="check-detail-button" data-patient-id="PAT002">Check Details</button>
+                        </div>
+
+                        <div class="patient-card">
+                            <div class="patient-info">
+                                <h3>Sunil Mehta</h3>
+                                <div class="patient-details">
+                                    <span><i class="fas fa-bed"></i> Bed: 103</span>
+                                    <span><i class="fas fa-id-card"></i> ID: PAT003</span>
+                                    <span><i class="fas fa-phone"></i> +91 9876543212</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge active">Active</span>
+                                </div>
+                            </div>
+                            <button class="check-detail-button" data-patient-id="PAT003">Check Details</button>
+                        </div>
+
+                        <div class="patient-card">
+                            <div class="patient-info">
+                                <h3>Neha Gupta</h3>
+                                <div class="patient-details">
+                                    <span><i class="fas fa-bed"></i> Bed: 104</span>
+                                    <span><i class="fas fa-id-card"></i> ID: PAT004</span>
+                                    <span><i class="fas fa-phone"></i> +91 9876543213</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge recovered">Recovered</span>
+                                </div>
+                            </div>
+                            <button class="check-detail-button" data-patient-id="PAT004">Check Details</button>
+                        </div>
+
+                        <div class="patient-card">
+                            <div class="patient-info">
+                                <h3>Ravi Singh</h3>
+                                <div class="patient-details">
+                                    <span><i class="fas fa-bed"></i> Bed: 105</span>
+                                    <span><i class="fas fa-id-card"></i> ID: PAT005</span>
+                                    <span><i class="fas fa-phone"></i> +91 9876543214</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge active">Active</span>
+                                </div>
+                            </div>
+                            <button class="check-detail-button" data-patient-id="PAT005">Check Details</button>
+                        </div>
+
+                        <div class="patient-card">
+                            <div class="patient-info">
+                                <h3>Sita Devi</h3>
+                                <div class="patient-details">
+                                    <span><i class="fas fa-bed"></i> Bed: 106</span>
+                                    <span><i class="fas fa-id-card"></i> ID: PAT006</span>
+                                    <span><i class="fas fa-phone"></i> +91 9876543215</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge recovered">Recovered</span>
+                                </div>
+                            </div>
+                            <button class="check-detail-button" data-patient-id="PAT006">Check Details</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Patient Form -->
+            <section class="add-patient-section">
+                <h2><i class="fas fa-user-plus"></i> Add New Patient</h2>
+                <form id="addPatientForm" class="patient-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="patientName">Patient Name</label>
+                            <input type="text" id="patientName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="aadharNo">Aadhar Number</label>
+                            <input type="text" id="aadharNo" required pattern="\d{12}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phoneNo">Phone Number</label>
+                            <input type="tel" id="phoneNo" required pattern="\d{10}">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" required min="0" max="150">
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="address">Address</label>
+                        <textarea id="address" required rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="govtScheme">Government Scheme</label>
+                            <select id="govtScheme" required>
+                                <option value="">Select Scheme</option>
+                                <option value="ayushman">Ayushman Bharat</option>
+                                <option value="cghs">CGHS</option>
+                                <option value="esi">ESI</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="schemeId">Scheme ID</label>
+                            <input type="text" id="schemeId" required>
+                        </div>
+                    </div>
+                    <div class="form-row fingerprint-section">
+                        <div class="form-group">
+                            <label>Fingerprint Verification</label>
+                            <div class="fingerprint-container">
+                                <div class="fingerprint-box" id="fingerprintBox">
+                                    <i class="fas fa-fingerprint"></i>
+                                    <div class="scan-line"></div>
+                                    <p class="scan-status">Place finger on scanner</p>
+                                </div>
+                                <button type="button" class="btn-scan" id="startScan">
+                                    Start Scan
+                                </button>
+                            </div>
+                            <div class="verification-status hidden" id="verificationStatus">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Fingerprint Verified</span>
+                            </div>
+                        </div>
+                        <div class="form-group fingerprint-guide">
+                            <h4>Instructions:</h4>
+                            <ol>
+                                <li>Select government scheme</li>
+                                <li>Enter scheme ID</li>
+                                <li>Click "Start Scan"</li>
+                                <li>Place finger on scanner</li>
+                                <li>Wait for verification</li>
+                            </ol>
+                            <p class="note">* Fingerprint verification is mandatory for scheme activation</p>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="description">Medical Description</label>
+                        <textarea id="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="medicalReports">Upload Medical Reports</label>
+                        <input type="file" id="medicalReports" multiple accept=".pdf,.jpg,.png">
+                    </div>
+                    <div class="form-actions">
+                        <button type="reset" class="btn-secondary">Clear Form</button>
+                        <button type="submit" class="btn-primary">Add Patient</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Emergency Chat Section -->
+            <section class="chat-section">
+                <h2><i class="fas fa-comments"></i> Emergency Staff Chat</h2>
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <!-- Chat messages will be dynamically added here -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your message...">
+                        <button class="btn-primary"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications Section -->
+            <section class="notifications-section" style="display: none;">
+                <h2><i class="fas fa-bell"></i> Notifications</h2>
+                
+                <div class="notification-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="emergency">Emergency</button>
+                    <button class="filter-btn" data-filter="payment">Payments</button>
+                    <button class="filter-btn" data-filter="scheme">Scheme Updates</button>
+                </div>
+
+                <div class="notifications-container">
+                    <!-- Emergency Notifications -->
+                    <div class="notification-card emergency">
+                        <div class="notification-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h3>Emergency: Accident Case</h3>
+                            <p>Multiple trauma patient arriving in 10 minutes</p>
+                            <span class="notification-time">2 minutes ago</span>
+                        </div>
+                        <div class="notification-status unread"></div>
+                    </div>
+
+                    <!-- Payment Notifications -->
+                    <div class="notification-card payment">
+                        <div class="notification-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h3>Payment Received</h3>
+                            <p>₹15,000 received from Ayushman Bharat for Patient ID: AB123</p>
+                            <span class="notification-time">1 hour ago</span>
+                        </div>
+                        <div class="notification-status"></div>
+                    </div>
+
+                    <!-- Scheme Notifications -->
+                    <div class="notification-card scheme">
+                        <div class="notification-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h3>Scheme Update</h3>
+                            <p>New treatment procedures added to Ayushman Bharat coverage</p>
+                            <span class="notification-time">2 hours ago</span>
+                        </div>
+                        <div class="notification-status unread"></div>
+                    </div>
+
+                    <!-- More notifications... -->
+                    <div class="notification-card payment">
+                        <div class="notification-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h3>Claim Processed</h3>
+                            <p>₹25,000 claim processed for Patient ID: AB456</p>
+                            <span class="notification-time">3 hours ago</span>
+                        </div>
+                        <div class="notification-status"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkDetailButtons = document.querySelectorAll('.check-detail-button');
+
+        checkDetailButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const patientId = button.getAttribute('data-patient-id');
+                window.location.href = `patient-details.html?patientId=${patientId}`;
+            });
+        });
+    });
+    </script>
+</body>
+</html> 
